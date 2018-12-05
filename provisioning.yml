@@ -1,7 +1,0 @@
----
-- hosts: localhost
-  tasks:
-    - name: 'Pull CentOS image'
-        docker_image:
-          name: CentOS
-          tag: 7.4.1708

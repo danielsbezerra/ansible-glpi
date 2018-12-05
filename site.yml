@@ -1,0 +1,8 @@
+---
+- hosts: db_server
+  roles:
+  - role: dbtier
+
+- hosts: glpi_server
+  roles:
+  - role: glpi

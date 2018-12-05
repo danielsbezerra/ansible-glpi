@@ -1,2 +1,5 @@
-[glpi]
-glpi
+[glpi_server]
+172.28.128.3 ansible_user=vagrant
+
+[db_server]
+172.28.128.3 ansible_user=vagrant
