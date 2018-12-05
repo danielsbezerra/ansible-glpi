@@ -1,0 +1,4 @@
+Cent OS: 7.4.1708
+MariaDB: 5.5.56
+
+ansible-playbook site.yml --private-key .vagrant/machines/glpi/virtualbox/private_key -i hosts
