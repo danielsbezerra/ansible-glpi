@@ -1,5 +1,5 @@
 [glpi_server]
-172.28.128.3 ansible_user=vagrant
+172.28.128.3 ansible_user=vagrant ansible_ssh_private_key_file="/home/dbezerra/Documents/ansible/glpi/.vagrant/machines/glpi/virtualbox/private_key"
 
 [db_server]
-172.28.128.3 ansible_user=vagrant
+172.28.128.3 ansible_user=vagrant ansible_ssh_private_key_file="/home/dbezerra/Documents/ansible/glpi/.vagrant/machines/glpi/virtualbox/private_key"
