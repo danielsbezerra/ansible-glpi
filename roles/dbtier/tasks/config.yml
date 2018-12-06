@@ -1,0 +1,35 @@
+---
+# - name: Install server config
+#   template:
+#     src: "templates/my.cnf.j2"
+#     dest: "{{ mariadb_config }}"
+#     owner: root
+#     group: root
+#     mode: 0644
+#   notify: restart mariadb
+#   tags: mariadb
+#   become: yes
+
+- name: Configure swappiness
+  sysctl:
+    name: vm.swappiness
+    value: "{{ mariadb_swappiness }}"
+    state: present
+  when: mariadb_configure_swappiness
+  tags: mariadb
+  become: yes
+
+# - name: Ensure service is started didn't work!!!
+#   service:
+#     name: "{{ mariadb_service }}"
+#     state: started
+#     enabled: yes
+#   tags: mariadb
+#   become: yes
+
+# Generates warning message and always changed output
+- name: Ensure service is started 
+  shell: service mysql start
+  become: yes
+  args:
+    warn: False

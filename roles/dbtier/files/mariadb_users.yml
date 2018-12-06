@@ -1,0 +1,10 @@
+mariadb_users:
+  - name: usr_mariadb
+    password: d@123456
+    priv: '*.*:ALL,GRANT'
+    #host: '172.128.28.%'
+
+  - name: pferreira
+    password: d@123456
+    priv: '*.*:ALL'
+    #host: '172.128.28.%'

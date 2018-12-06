@@ -1,3 +1,5 @@
 ---
-- name: Simple command
-  shell: "echo Hello, World!"
+- include_tasks: install.yml
+- include_tasks: config.yml
+- include_tasks: root-password.yml
+- include_tasks: users.yml
