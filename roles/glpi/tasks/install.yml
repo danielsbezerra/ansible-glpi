@@ -1,20 +1,30 @@
 ---
-- name: Add official MariaDB repository
-  yum_repository:
-    name: MariaDB
-    description: Official MariaDB repository
-    #baseurl: http://yum.mariadb.org/5.5/centos7-amd64
-    baseurl: "http://{{ mariadb_mirror }}/{{ mariadb_version }}/{{ ansible_distribution|lower|regex_replace('redhat', 'rhel')|regex_replace('oraclelinux', 'centos') }}{{ ansible_distribution_major_version }}-amd64"
-    gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-    gpgcheck: true
-  tags: mariadb
-  become: yes
-
-
-- name: Install packages
+# TODO: Ensure it is the php is 5.4.16
+# TODO: Ensure it is the httpd is 2.4.6
+- name: Install prerequisites
   package:
     name: "{{ item }}"
     state: installed
-  with_items: "{{ mariadb_packages }}"
-  tags: mariadb
+  with_items: "{{ glpi_prerequisites_packages }}"
+  tags: glpi
   become: yes
+
+- name: Download glpi tar.gz file
+  get_url:
+    url: "https://github.com/glpi-project/glpi/releases/download/9.1/glpi-9.1.tar.gz"
+    dest: "/tmp/glpi-9.1.tar.gz"
+    mode: 0444
+
+- name: Unpack glpi
+  unarchive:
+    src: "/tmp/glpi-9.1.tar.gz"
+    dest: "/var/www/"
+    remote_src: yes
+  become: yes
+
+- copy:
+    src: "files/index.php"
+    dest: "/var/www/index.php"
+  become: yes
+
+

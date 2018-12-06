@@ -1,15 +1,20 @@
 ---
-# - name: Ensure service is started didn't work!!!
-#   service:
-#     name: "{{ mariadb_service }}"
-#     state: started
-#     enabled: yes
-#   tags: mariadb
-#   become: yes
+- name: Open port 80 for http access
+  firewalld:
+    service: http
+    permanent: true
+    state: enabled
+  become: yes
+
+- name: Restart the firewalld service to load in the firewall changes
+  service: 
+    name: firewalld 
+    state: restarted
+  become: yes
 
 # Generates warning message and always changed output
 - name: Ensure service is started 
-  shell: service mysql start
+  shell: service httpd start
   become: yes
   args:
     warn: False
