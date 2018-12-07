@@ -1,0 +1,4 @@
+---
+- hosts: glpiserver
+  roles:
+  - role: glpi

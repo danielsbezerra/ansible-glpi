@@ -1,8 +1,3 @@
 ---
-- hosts: db_server
-  roles:
-  - role: dbtier
-
-- hosts: glpi_server
-  roles:
-  - role: glpi
+- import_playbook: dbserver.yml
+- import_playbook: glpiserver.yml

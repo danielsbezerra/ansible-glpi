@@ -33,17 +33,20 @@
     - httpd_can_sendmail
     - httpd_can_network_connect
     - httpd_can_network_connect_db
+  # notify:
+  #   - restart httpd
+  #   - restart firewalld
   become: yes
 
 - name: Restart the firewalld service to load in the firewall changes
   service: 
-    name: firewalld 
+    name: "{{ firewalld_service }}"
     state: restarted
   become: yes
 
 # Generates warning message and always changed output
 - name: Restart httpd service
-  shell: service httpd restart
+  shell: "service {{ httpd_service }} restart"
   become: yes
   args:
     warn: False
