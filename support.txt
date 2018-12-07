@@ -17,3 +17,5 @@ ansible-playbook site.yml -i hosts
 
 sudo service mysql start
 
+
+https://www.experts-exchange.com/questions/27145504/GLPI-LDAP-AD-Authentication.html

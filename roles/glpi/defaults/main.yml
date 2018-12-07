@@ -20,5 +20,6 @@ glpi_prerequisites_packages:
   - httpd
   - php-openssl
   - php-mysql
+  - mod_auth_gssapi # LDAP integration
 
 php_default_version: "5.4.16"
