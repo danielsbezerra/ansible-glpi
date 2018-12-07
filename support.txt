@@ -1,3 +1,11 @@
+1) Delete local ~/.ssh/known_hosts
+2) vagrant destroy
+3) vagrant up
+
+
+
+
+
 Cent OS: 7.4.1708
 MariaDB: 5.5.56
 GLPI: 9.1
@@ -5,5 +13,7 @@ PHP 5.4.16
 Apache/2.4.6 (CentOS)
 
 ansible-playbook site.yml --private-key .vagrant/machines/glpi/virtualbox/private_key -i hosts
+ansible-playbook site.yml -i hosts
 
 sudo service mysql start
+

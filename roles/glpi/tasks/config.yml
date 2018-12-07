@@ -1,4 +1,11 @@
 ---
+ #Change httpd root path
+- lineinfile:
+    path: "/etc/httpd/conf/httpd.conf"
+    regexp: "^DocumentRoot "
+    line: "DocumentRoot \"/var/www\""
+  become: yes
+
 - name: Open port 80 for http access
   firewalld:
     service: http
@@ -13,8 +20,8 @@
   become: yes
 
 # Generates warning message and always changed output
-- name: Ensure service is started 
-  shell: service httpd start
+- name: Restart httpd service
+  shell: service httpd restart
   become: yes
   args:
     warn: False

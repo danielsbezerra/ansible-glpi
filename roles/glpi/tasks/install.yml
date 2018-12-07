@@ -19,12 +19,15 @@
   unarchive:
     src: "/tmp/glpi-9.1.tar.gz"
     dest: "/var/www/"
+    owner: apache
+    group: apache
+    mode: 0777
     remote_src: yes
   become: yes
 
 - copy:
     src: "files/index.php"
-    dest: "/var/www/index.php"
+    dest: "/var/www/html/index.php"
   become: yes
 
 

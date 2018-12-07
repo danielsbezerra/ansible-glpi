@@ -11,7 +11,6 @@ mariadb_packages:
 # Login / users
 mariadb_new_root_password: "d@123456"
 mariadb_root_password: ""
-mariadb_users: {name: "usr_mariadb", password: "d@123456", priv: "*.*:ALL,GRANT"}
 
 # General conf
 mariadb_configure_swappiness: true
@@ -29,8 +28,11 @@ mariadb_server_id: 1
 mariadb_share_dir: "/usr/share/mysql"
 mariadb_skip_charset_handshake: true
 # mariadb_service: "/usr/sbin/mysqld"
-
-
+mariadb_dump_file: bd_centraldeservicos.tar.gz
+mariadb_sql_file: banco.sql
+mariadb_unnecessary_databases:
+  - test
+  - tmig2
 
 # Network configuration
 mariadb_bind_address: '127.0.0.1'

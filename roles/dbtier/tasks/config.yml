@@ -10,14 +10,14 @@
 #   tags: mariadb
 #   become: yes
 
-- name: Configure swappiness
-  sysctl:
-    name: vm.swappiness
-    value: "{{ mariadb_swappiness }}"
-    state: present
-  when: mariadb_configure_swappiness
-  tags: mariadb
-  become: yes
+# - name: Configure swappiness
+#   sysctl:
+#     name: vm.swappiness
+#     value: "{{ mariadb_swappiness }}"
+#     state: present
+#   when: mariadb_configure_swappiness
+#   tags: mariadb
+#   become: yes
 
 # - name: Ensure service is started didn't work!!!
 #   service:
@@ -33,3 +33,5 @@
   become: yes
   args:
     warn: False
+
+

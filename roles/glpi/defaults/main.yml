@@ -18,5 +18,7 @@ glpi_prerequisites_packages:
   - php-xml
   - php-xmlrpc
   - httpd
+  - php-openssl
+  - php-mysql
 
 php_default_version: "5.4.16"

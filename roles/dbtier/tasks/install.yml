@@ -9,7 +9,6 @@
   tags: mariadb
   become: yes
 
-
 - name: Install packages
   package:
     name: "{{ item }}"
