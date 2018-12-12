@@ -1,15 +1,15 @@
 mariadb_users:
   - name: usr_mariadb
     password: d@123456
-    priv: '*.*:ALL,GRANT'
+    priv: "*.*:ALL,GRANT"
     #host: '172.28.128.%'
 
   - name: pferreira
     password: d@123456
-    priv: '*.*:ALL'
+    priv: "*.*:ALL"
     #host: '172.28.128.%'
 
   - name: root
     password: d@123456
-    priv: '*.*:ALL'
-    host: '%'
+    priv: "*.*:ALL"
+    host: "%"

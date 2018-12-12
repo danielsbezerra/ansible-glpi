@@ -1,5 +1,6 @@
 .vagrant/
 site.retry
 versions.txt
+support.txt
 roles/dbtier/files/banco.sql
 roles/dbtier/files/bd_centraldeservicos.tar.gz

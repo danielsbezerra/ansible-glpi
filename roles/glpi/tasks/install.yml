@@ -9,15 +9,30 @@
   tags: glpi
   become: yes
 
-- name: Download glpi tar.gz file
-  get_url:
-    url: "https://github.com/glpi-project/glpi/releases/download/9.1/glpi-9.1.tar.gz"
-    dest: "/tmp/glpi-9.1.tar.gz"
-    mode: 0444
+# - name: Download glpi tar.gz file
+#   get_url:
+#     url: "https://github.com/glpi-project/glpi/releases/download/9.1/glpi-9.1.tar.gz"
+#     dest: "/tmp/glpi-9.1.tar.gz"
+#     mode: 0444
 
-- name: Unpack glpi
+# - name: Unpack original GLPI
+#   unarchive:
+#     src: "/tmp/glpi-9.1.tar.gz"
+#     dest: "/var/www/"
+#     owner: apache
+#     group: apache
+#     mode: 0777
+#     remote_src: yes
+#   become: yes
+
+- copy:
+    src: "files/backup_centraldeservicos.tar.gz"
+    dest: "/tmp/backup_centraldeservicos.tar.gz"
+  become: yes
+
+- name: Unpack personal GLPI
   unarchive:
-    src: "/tmp/glpi-9.1.tar.gz"
+    src: "/tmp/backup_centraldeservicos.tar.gz"
     dest: "/var/www/"
     owner: apache
     group: apache
@@ -25,9 +40,10 @@
     remote_src: yes
   become: yes
 
-- copy:
-    src: "files/index.php"
-    dest: "/var/www/html/index.php"
-  become: yes
+# Teste PHP
+# - copy:
+#     src: "files/index.php"
+#     dest: "/var/www/html/index.php"
+#   become: yes
 
 

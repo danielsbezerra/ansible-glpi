@@ -1,0 +1,26 @@
+---
+# Copy database dump file to remote host and restore it to database 'my_db'
+- name: Copy database dump file
+  copy:
+    src: "files/{{ mariadb_dump_file }}"
+    dest: "/tmp/{{ mariadb_dump_file }}"
+
+- name: Copy permissions file
+  copy:
+    src: "files/{{ mariadb_permissions_file }}"
+    dest: "/tmp/{{ mariadb_permissions_file }}"
+
+- name: Unpack glpi
+  unarchive:
+    src: "/tmp/{{ mariadb_dump_file }}"
+    dest: "/tmp"
+    remote_src: yes
+  become: yes
+
+- name: Create new 'glpi' database and some needed permissions to enable database restore
+  mysql_db:
+    name: glpi
+    state: import
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+    target: "/tmp/{{ mariadb_permissions_file }}"

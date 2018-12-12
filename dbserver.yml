@@ -1,4 +1,5 @@
 ---
 - hosts: dbserver
   roles:
-  - role: dbtier
+    - common
+    - dbtier

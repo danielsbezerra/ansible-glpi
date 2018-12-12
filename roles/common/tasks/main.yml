@@ -1,0 +1,12 @@
+---
+- name: Install Nano
+  package:
+    name: "nano"
+    state: installed
+  become: yes
+
+- name: Install Cifs Utils
+  package:
+    name: "cifs-utils.x86_64"
+    state: installed
+  become: yes
